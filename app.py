@@ -6,6 +6,7 @@ from langchain.memory import ConversationBufferMemory
 
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
 
 from loaders import *
@@ -19,7 +20,10 @@ CONFIG_MODELOS = {'Groq':
                         'chat': ChatGroq},
                   'OpenAI': 
                         {'modelos':['openai/gpt-oss-20b','openai/gpt-oss-safeguard-20b'],
-                        'chat': ChatOpenAI}}
+                        'chat': ChatOpenAI},
+                  'Gemini': 
+                        {'modelos':['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-2.5-pro'],
+                        'chat': ChatGoogleGenerativeAI}}
 
 MEMORIA = ConversationBufferMemory()
 
@@ -68,7 +72,7 @@ def carrega_modelo(provedor, modelo, api_key, tipo_arquivo, arquivo):
 
     template = ChatPromptTemplate.from_messages([
         ('system', system_message),
-        ('placeholder' '{chat_history}'),
+        ('placeholder', '{chat_history}'),
         ('user', '{input}'),
     ])
 

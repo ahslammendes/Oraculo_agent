@@ -1,6 +1,6 @@
 # 🤖 Oráculo — Assistente de IA para Análise de Documentos e Mídias
 
-O **Oráculo** é uma aplicação interativa de chat com Inteligência Artificial construída em Python com **Streamlit** e **LangChain**. O agente permite carregar diferentes fontes de dados (sites, vídeos do YouTube e arquivos PDF, CSV ou TXT) e conversar diretamente com o conteúdo utilizando modelos de linguagem (LLMs) da **Groq** ou da **OpenAI**.
+O **Oráculo** é uma aplicação interativa de chat com Inteligência Artificial construída em Python com **Streamlit** e **LangChain**. O agente permite carregar diferentes fontes de dados (sites, vídeos do YouTube e arquivos PDF, CSV ou TXT) e conversar diretamente com o conteúdo utilizando modelos de linguagem (LLMs) da **Groq**, **OpenAI** ou **Google Gemini**.
 
 ---
 
@@ -12,7 +12,7 @@ O **Oráculo** é uma aplicação interativa de chat com Inteligência Artificia
   - 📄 **PDF:** Leitura e extração de texto de documentos PDF.
   - 📊 **CSV:** Carregamento estruturado de bases de dados em CSV.
   - 📝 **TXT:** Leitura de arquivos de texto puro.
-- **Múltiplos Provedores de LLM:** Alternância fácil na interface entre modelos da **Groq** e da **OpenAI**.
+- **Múltiplos Provedores de LLM:** Alternância fácil na interface entre modelos da **Groq**, **OpenAI** e **Gemini (Google)**.
 - **Memória de Conversação:** Mantém o histórico do diálogo durante a sessão (`ConversationBufferMemory`).
 - **Respostas em Streaming:** Exibição da resposta da IA em tempo real na interface do chat.
 
