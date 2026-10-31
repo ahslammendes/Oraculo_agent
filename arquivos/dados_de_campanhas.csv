@@ -1,0 +1,6 @@
+ID,Nome da Campanha,Plataforma,Orcamento_BRL,Gasto_BRL,Cliques,Conversoes,ROI
+CMP-001,Lancamento Produto Alpha,Meta Ads,15000.00,14500.50,25000,1200,3.2
+CMP-002,Retargeting Black Friday,Google Ads,8000.00,7950.00,12000,850,4.5
+CMP-003,Inbound B2B Tech,LinkedIn Ads,12000.00,10200.00,4500,320,2.1
+CMP-004,Brand Awareness Jovem,TikTok Ads,5000.00,5000.00,80000,400,1.5
+CMP-005,Email Marketing Promo,SendGrid,1000.00,950.00,8500,900,8.0
