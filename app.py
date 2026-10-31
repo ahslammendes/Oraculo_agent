@@ -22,7 +22,7 @@ CONFIG_MODELOS = {'Groq':
                         {'modelos':['openai/gpt-oss-20b','openai/gpt-oss-safeguard-20b'],
                         'chat': ChatOpenAI},
                   'Gemini': 
-                        {'modelos':['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-2.5-pro'],
+                        {'modelos':['gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'],
                         'chat': ChatGoogleGenerativeAI}}
 
 MEMORIA = ConversationBufferMemory()
