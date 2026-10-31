@@ -2,12 +2,12 @@
 import tempfile
 
 import streamlit as st
-from langchain.memory import ConversationBufferMemory
+from langchain_core.chat_history import InMemoryChatMessageHistory
 
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 from loaders import *
 
@@ -25,7 +25,7 @@ CONFIG_MODELOS = {'Groq':
                         {'modelos':['gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'],
                         'chat': ChatGoogleGenerativeAI}}
 
-MEMORIA = ConversationBufferMemory()
+MEMORIA = InMemoryChatMessageHistory()
 
 def carrega_arquivos(tipo_arquivo,arquivo):
     if tipo_arquivo == 'Site':
@@ -92,7 +92,7 @@ def pagina_chat():
         st.stop()
 
     memoria = st.session_state.get('memoria', MEMORIA)
-    for mensagem in memoria.buffer_as_messages:
+    for mensagem in memoria.messages:
         chat = st.chat_message(mensagem.type)
         chat.markdown(mensagem.content)
 
@@ -104,11 +104,11 @@ def pagina_chat():
         chat = st.chat_message('AI')
         resposta = chat.write_stream(chain.stream({
             'input':input_usuario, 
-            'chat_history': memoria.buffer_as_messages
+            'chat_history': memoria.messages
             }))
         
-        memoria.chat_memory.add_user_message(input_usuario)
-        memoria.chat_memory.add_ai_message(resposta)
+        memoria.add_user_message(input_usuario)
+        memoria.add_ai_message(resposta)
         st.session_state['memoria'] = memoria
         
 
@@ -137,7 +137,7 @@ def sidebar():
     if st.button('Inicializar Oráculo', use_container_width=True):
         carrega_modelo(provedor,modelo,api_key, tipo_arquivo, arquivo)
     if st.button('Apagar Histórico de Conversa', use_container_width=True):
-        st.session_state['memoria'] = MEMORIA
+        st.session_state['memoria'] = InMemoryChatMessageHistory()
 
 def main():
     with st.sidebar:
@@ -148,4 +148,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
